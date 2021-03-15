@@ -66,7 +66,7 @@ class Model():
             self.changed = True
 
         t = self.timeInState
-       self.parameter = eval(self.currentModel)
+        self.parameter = eval(self.currentModel)
 
     def getParameter(self):
         return self.parameter * self.amp
