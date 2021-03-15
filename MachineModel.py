@@ -62,7 +62,6 @@ class Model():
             self.changed = True
         if (abs(self.parameter) < 0.01) and self.newState == State.STOPPING:
             self.newState = State.OFF 
-
             self.changed = True
 
         t = self.timeInState
@@ -72,10 +71,12 @@ class Model():
         return self.parameter * self.amp
 
     def start(self):
-        self.newState = State.STARTING
-        self.changed = True
+        if self.newState != State.STARTING and self.newState != State.ON:
+            self.newState = State.STARTING
+            self.changed = True
 
     def stop(self):
-        self.newState = State.STOPPING
-        self.changed = True
+        if self.newState != State.STOPPING and self.newState != State.OFF:
+            self.newState = State.STOPPING
+            self.changed = True
 
