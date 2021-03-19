@@ -32,8 +32,10 @@ async def opcProvider():
         motorobj = await server.nodes.objects.add_object(idx, motor)
         variableName = motor + "_param"
         opcVariables[variableName] = await motorobj.add_variable(idx, variableName, 0.0)
+        print(variableName + ": " + str(opcVariables[variableName]))
         variableName = motor + "_start"
         opcVariables[variableName] = await motorobj.add_variable(idx, variableName,  False)
+        print(variableName + ": " + str(opcVariables[variableName]))
         await opcVariables[variableName].set_writable()
 
     print('Server started!', flush=True)
